@@ -244,21 +244,21 @@ GenerateMembers(io::Printer* printer) const {
     "}\n");
 
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "private void clear$capitalized_name$() {\n"
-    "  $clear_has_field_bit_message$\n");
-  JavaType type = GetJavaType(descriptor_);
-  if (type == JAVATYPE_STRING || type == JAVATYPE_BYTES) {
-    // The default value is not a simple literal so we want to avoid executing
-    // it multiple times.  Instead, get the default out of the default instance.
-    printer->Print(variables_,
-      "  $name$_ = getDefaultInstance().get$capitalized_name$();\n");
-  } else {
-    printer->Print(variables_,
-      "  $name$_ = $default$;\n");
-  }
-  printer->Print(variables_,
-    "}\n");
+  // printer->Print(variables_,
+  //   "private void clear$capitalized_name$() {\n"
+  //   "  $clear_has_field_bit_message$\n");
+  // JavaType type = GetJavaType(descriptor_);
+  // if (type == JAVATYPE_STRING || type == JAVATYPE_BYTES) {
+  //   // The default value is not a simple literal so we want to avoid executing
+  //   // it multiple times.  Instead, get the default out of the default instance.
+  //   printer->Print(variables_,
+  //     "  $name$_ = getDefaultInstance().get$capitalized_name$();\n");
+  // } else {
+  //   printer->Print(variables_,
+  //     "  $name$_ = $default$;\n");
+  // }
+  // printer->Print(variables_,
+  //   "}\n");
 }
 
 void ImmutablePrimitiveFieldLiteGenerator::
@@ -289,13 +289,13 @@ GenerateBuilderMembers(io::Printer* printer) const {
   printer->Annotate("{", "}", descriptor_);
 
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public Builder ${$clear$capitalized_name$$}$() {\n"
-    "  copyOnWrite();\n"
-    "  instance.clear$capitalized_name$();\n"
-    "  return this;\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public Builder ${$clear$capitalized_name$$}$() {\n"
+  //   "  copyOnWrite();\n"
+  //   "  instance.clear$capitalized_name$();\n"
+  //   "  return this;\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 }
 
 void ImmutablePrimitiveFieldLiteGenerator::

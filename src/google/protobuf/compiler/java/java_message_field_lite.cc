@@ -159,12 +159,12 @@ GenerateMembers(io::Printer* printer) const {
     printer->Annotate("{", "}", descriptor_);
   } else {
     WriteFieldDocComment(printer, descriptor_);
-    printer->Print(variables_,
-      "$deprecation$public boolean ${$has$capitalized_name$$}$() {\n"
-      "  return $name$_ != null;\n"
-      "}\n");
-    printer->Annotate("{", "}", descriptor_);
-    WriteFieldDocComment(printer, descriptor_);
+    // printer->Print(variables_,
+    //   "$deprecation$public boolean ${$has$capitalized_name$$}$() {\n"
+    //   "  return $name$_ != null;\n"
+    //   "}\n");
+    // printer->Annotate("{", "}", descriptor_);
+    // WriteFieldDocComment(printer, descriptor_);
     printer->Print(variables_,
       "$deprecation$public $type$ ${$get$capitalized_name$$}$() {\n"
       "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n"
@@ -194,25 +194,25 @@ GenerateMembers(io::Printer* printer) const {
 
   // Field.Builder mergeField(Field value)
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "private void merge$capitalized_name$($type$ value) {\n"
-    "  if ($name$_ != null &&\n"
-    "      $name$_ != $type$.getDefaultInstance()) {\n"
-    "    $name$_ =\n"
-    "      $type$.newBuilder($name$_).mergeFrom(value).buildPartial();\n"
-    "  } else {\n"
-    "    $name$_ = value;\n"
-    "  }\n"
-    "  $set_has_field_bit_message$\n"
-    "}\n");
+  // printer->Print(variables_,
+  //   "private void merge$capitalized_name$($type$ value) {\n"
+  //   "  if ($name$_ != null &&\n"
+  //   "      $name$_ != $type$.getDefaultInstance()) {\n"
+  //   "    $name$_ =\n"
+  //   "      $type$.newBuilder($name$_).mergeFrom(value).buildPartial();\n"
+  //   "  } else {\n"
+  //   "    $name$_ = value;\n"
+  //   "  }\n"
+  //   "  $set_has_field_bit_message$\n"
+  //   "}\n");
 
-  // Field.Builder clearField()
-  WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "private void clear$capitalized_name$() {"
-    "  $name$_ = null;\n"
-    "  $clear_has_field_bit_message$\n"
-    "}\n");
+  // // Field.Builder clearField()
+  // WriteFieldDocComment(printer, descriptor_);
+  // printer->Print(variables_,
+  //   "private void clear$capitalized_name$() {"
+  //   "  $name$_ = null;\n"
+  //   "  $clear_has_field_bit_message$\n"
+  //   "}\n");
 }
 
 void ImmutableMessageFieldLiteGenerator::
@@ -222,14 +222,14 @@ GenerateBuilderMembers(io::Printer* printer) const {
 
   // boolean hasField()
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public boolean ${$has$capitalized_name$$}$() {\n"
-    "  return instance.has$capitalized_name$();\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public boolean ${$has$capitalized_name$$}$() {\n"
+  //   "  return instance.has$capitalized_name$();\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 
-  // Field getField()
-  WriteFieldDocComment(printer, descriptor_);
+  // // Field getField()
+  // WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
     "$deprecation$public $type$ ${$get$capitalized_name$$}$() {\n"
     "  return instance.get$capitalized_name$();\n"
@@ -259,24 +259,24 @@ GenerateBuilderMembers(io::Printer* printer) const {
 
   // Field.Builder mergeField(Field value)
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public Builder "
-    "${$merge$capitalized_name$$}$($type$ value) {\n"
-    "  copyOnWrite();\n"
-    "  instance.merge$capitalized_name$(value);\n"
-    "  return this;\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public Builder "
+  //   "${$merge$capitalized_name$$}$($type$ value) {\n"
+  //   "  copyOnWrite();\n"
+  //   "  instance.merge$capitalized_name$(value);\n"
+  //   "  return this;\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 
-  // Field.Builder clearField()
-  WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public Builder ${$clear$capitalized_name$$}$() {"
-    "  copyOnWrite();\n"
-    "  instance.clear$capitalized_name$();\n"
-    "  return this;\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // // Field.Builder clearField()
+  // WriteFieldDocComment(printer, descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public Builder ${$clear$capitalized_name$$}$() {"
+  //   "  copyOnWrite();\n"
+  //   "  instance.clear$capitalized_name$();\n"
+  //   "  return this;\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 }
 
 void ImmutableMessageFieldLiteGenerator::
@@ -630,13 +630,13 @@ GenerateMembers(io::Printer* printer) const {
     "}\n");
   printer->Annotate("{", "}", descriptor_);
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public java.util.List<? extends $type$OrBuilder> \n"
-    "    ${$get$capitalized_name$OrBuilderList$}$() {\n"
-    "  return $name$_;\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
-  WriteFieldDocComment(printer, descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public java.util.List<? extends $type$OrBuilder> \n"
+  //   "    ${$get$capitalized_name$OrBuilderList$}$() {\n"
+  //   "  return $name$_;\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
+  // WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
     "$deprecation$public int ${$get$capitalized_name$Count$}$() {\n"
     "  return $name$_.size();\n"
@@ -649,13 +649,13 @@ GenerateMembers(io::Printer* printer) const {
     "}\n");
   printer->Annotate("{", "}", descriptor_);
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public $type$OrBuilder "
-    "${$get$capitalized_name$OrBuilder$}$(\n"
-    "    int index) {\n"
-    "  return $name$_.get(index);\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public $type$OrBuilder "
+  //   "${$get$capitalized_name$OrBuilder$}$(\n"
+  //   "    int index) {\n"
+  //   "  return $name$_.get(index);\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 
   printer->Print(variables_,
     "private void ensure$capitalized_name$IsMutable() {\n"

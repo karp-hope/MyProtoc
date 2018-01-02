@@ -136,15 +136,16 @@ void ImmutableMessageLiteGenerator::GenerateInterface(io::Printer* printer) {
         "classname", descriptor_->name(),
         "{", "", "}", "");
   } else {
-    printer->Print(
-        "$deprecation$public interface ${$$classname$OrBuilder$}$ extends\n"
-        "    $extra_interfaces$\n"
-        "    com.google.protobuf.MessageLiteOrBuilder {\n",
-        "deprecation", descriptor_->options().deprecated() ?
-            "@java.lang.Deprecated " : "",
-        "extra_interfaces", ExtraMessageOrBuilderInterfaces(descriptor_),
-        "classname", descriptor_->name(),
-        "{", "", "}", "");
+    // printer->Print(
+    //     "$deprecation$public interface ${$$classname$OrBuilder$}$ extends\n"
+    //     "    $extra_interfaces$\n"
+    //     "    com.google.protobuf.MessageLiteOrBuilder {\n",
+    //     "deprecation", descriptor_->options().deprecated() ?
+    //         "@java.lang.Deprecated " : "",
+    //     "extra_interfaces", ExtraMessageOrBuilderInterfaces(descriptor_),
+    //     "classname", descriptor_->name(),
+    //     "{", "", "}", "");
+    return;
   }
   printer->Annotate("{", "}", descriptor_);
 
@@ -205,7 +206,8 @@ void ImmutableMessageLiteGenerator::Generate(io::Printer* printer) {
         "    com.google.protobuf.GeneratedMessageLite<\n"
         "        $classname$, $classname$.Builder> implements\n"
         "    $extra_interfaces$\n"
-        "    $classname$OrBuilder {\n");
+        //"    $classname$OrBuilder {\n");
+        "    com.google.protobuf.MessageLiteOrBuilder {\n");
 
     builder_type = "com.google.protobuf.GeneratedMessageLite.Builder";
   }
@@ -586,79 +588,79 @@ GenerateParseFromMethods(io::Printer* printer) {
   //   because they need to be generated even for messages that are optimized
   //   for code size.
   printer->Print(
-    "public static $classname$ parseFrom(\n"
-    "    java.nio.ByteBuffer data)\n"
-    "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, data);\n"
-    "}\n"
-    "public static $classname$ parseFrom(\n"
-    "    java.nio.ByteBuffer data,\n"
-    "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
-    "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, data, extensionRegistry);\n"
-    "}\n"
-    "public static $classname$ parseFrom(\n"
-    "    com.google.protobuf.ByteString data)\n"
-    "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, data);\n"
-    "}\n"
-    "public static $classname$ parseFrom(\n"
-    "    com.google.protobuf.ByteString data,\n"
-    "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
-    "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, data, extensionRegistry);\n"
-    "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    java.nio.ByteBuffer data)\n"
+    // "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, data);\n"
+    // "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    java.nio.ByteBuffer data,\n"
+    // "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
+    // "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, data, extensionRegistry);\n"
+    // "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    com.google.protobuf.ByteString data)\n"
+    // "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, data);\n"
+    // "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    com.google.protobuf.ByteString data,\n"
+    // "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
+    // "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, data, extensionRegistry);\n"
+    // "}\n"
     "public static $classname$ parseFrom(byte[] data)\n"
     "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
     "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
     "      DEFAULT_INSTANCE, data);\n"
     "}\n"
-    "public static $classname$ parseFrom(\n"
-    "    byte[] data,\n"
-    "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
-    "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, data, extensionRegistry);\n"
-    "}\n"
-    "public static $classname$ parseFrom(java.io.InputStream input)\n"
-    "    throws java.io.IOException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, input);\n"
-    "}\n"
-    "public static $classname$ parseFrom(\n"
-    "    java.io.InputStream input,\n"
-    "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
-    "    throws java.io.IOException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, input, extensionRegistry);\n"
-    "}\n"
-    "public static $classname$ parseDelimitedFrom(java.io.InputStream input)\n"
-    "    throws java.io.IOException {\n"
-    "  return parseDelimitedFrom(DEFAULT_INSTANCE, input);\n"
-    "}\n"
-    "public static $classname$ parseDelimitedFrom(\n"
-    "    java.io.InputStream input,\n"
-    "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
-    "    throws java.io.IOException {\n"
-    "  return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);\n"
-    "}\n"
-    "public static $classname$ parseFrom(\n"
-    "    com.google.protobuf.CodedInputStream input)\n"
-    "    throws java.io.IOException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, input);\n"
-    "}\n"
-    "public static $classname$ parseFrom(\n"
-    "    com.google.protobuf.CodedInputStream input,\n"
-    "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
-    "    throws java.io.IOException {\n"
-    "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
-    "      DEFAULT_INSTANCE, input, extensionRegistry);\n"
-    "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    byte[] data,\n"
+    // "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
+    // "    throws com.google.protobuf.InvalidProtocolBufferException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, data, extensionRegistry);\n"
+    // "}\n"
+    // "public static $classname$ parseFrom(java.io.InputStream input)\n"
+    // "    throws java.io.IOException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, input);\n"
+    // "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    java.io.InputStream input,\n"
+    // "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
+    // "    throws java.io.IOException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, input, extensionRegistry);\n"
+    // "}\n"
+    // "public static $classname$ parseDelimitedFrom(java.io.InputStream input)\n"
+    // "    throws java.io.IOException {\n"
+    // "  return parseDelimitedFrom(DEFAULT_INSTANCE, input);\n"
+    // "}\n"
+    // "public static $classname$ parseDelimitedFrom(\n"
+    // "    java.io.InputStream input,\n"
+    // "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
+    // "    throws java.io.IOException {\n"
+    // "  return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);\n"
+    // "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    com.google.protobuf.CodedInputStream input)\n"
+    // "    throws java.io.IOException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, input);\n"
+    // "}\n"
+    // "public static $classname$ parseFrom(\n"
+    // "    com.google.protobuf.CodedInputStream input,\n"
+    // "    com.google.protobuf.ExtensionRegistryLite extensionRegistry)\n"
+    // "    throws java.io.IOException {\n"
+    // "  return com.google.protobuf.GeneratedMessageLite.parseFrom(\n"
+    // "      DEFAULT_INSTANCE, input, extensionRegistry);\n"
+    // "}\n"
     "\n",
     "classname", name_resolver_->GetImmutableClassName(descriptor_));
 }

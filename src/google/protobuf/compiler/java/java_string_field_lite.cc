@@ -205,14 +205,15 @@ GenerateMembers(io::Printer* printer) const {
     "}\n");
   printer->Annotate("{", "}", descriptor_);
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public com.google.protobuf.ByteString\n"
-    "    ${$get$capitalized_name$Bytes$}$() {\n"
-    "  return com.google.protobuf.ByteString.copyFromUtf8($name$_);\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  
+  // printer->Print(variables_,
+  //   "$deprecation$public com.google.protobuf.ByteString\n"
+  //   "    ${$get$capitalized_name$Bytes$}$() {\n"
+  //   "  return com.google.protobuf.ByteString.copyFromUtf8($name$_);\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 
-  WriteFieldDocComment(printer, descriptor_);
+  // WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
     "private void set$capitalized_name$(\n"
     "    java.lang.String value) {\n"
@@ -221,27 +222,27 @@ GenerateMembers(io::Printer* printer) const {
     "  $name$_ = value;\n"
     "}\n");
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "private void clear$capitalized_name$() {\n"
-    "  $clear_has_field_bit_message$\n"
-    // The default value is not a simple literal so we want to avoid executing
-    // it multiple times.  Instead, get the default out of the default instance.
-    "  $name$_ = getDefaultInstance().get$capitalized_name$();\n"
-    "}\n");
+  // printer->Print(variables_,
+  //   "private void clear$capitalized_name$() {\n"
+  //   "  $clear_has_field_bit_message$\n"
+  //   // The default value is not a simple literal so we want to avoid executing
+  //   // it multiple times.  Instead, get the default out of the default instance.
+  //   "  $name$_ = getDefaultInstance().get$capitalized_name$();\n"
+  //   "}\n");
 
-  WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "private void set$capitalized_name$Bytes(\n"
-    "    com.google.protobuf.ByteString value) {\n"
-    "$null_check$");
-  if (CheckUtf8(descriptor_)) {
-    printer->Print(variables_,
-      "  checkByteStringIsUtf8(value);\n");
-  }
-  printer->Print(variables_,
-    "  $set_has_field_bit_message$\n"
-    "  $name$_ = value.toStringUtf8();\n"
-    "}\n");
+  // WriteFieldDocComment(printer, descriptor_);
+  // printer->Print(variables_,
+  //   "private void set$capitalized_name$Bytes(\n"
+  //   "    com.google.protobuf.ByteString value) {\n"
+  //   "$null_check$");
+  // if (CheckUtf8(descriptor_)) {
+  //   printer->Print(variables_,
+  //     "  checkByteStringIsUtf8(value);\n");
+  // }
+  // printer->Print(variables_,
+  //   "  $set_has_field_bit_message$\n"
+  //   "  $name$_ = value.toStringUtf8();\n"
+  //   "}\n");
 }
 
 void ImmutableStringFieldLiteGenerator::
@@ -263,14 +264,14 @@ GenerateBuilderMembers(io::Printer* printer) const {
   printer->Annotate("{", "}", descriptor_);
 
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public com.google.protobuf.ByteString\n"
-    "    ${$get$capitalized_name$Bytes$}$() {\n"
-    "  return instance.get$capitalized_name$Bytes();\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public com.google.protobuf.ByteString\n"
+  //   "    ${$get$capitalized_name$Bytes$}$() {\n"
+  //   "  return instance.get$capitalized_name$Bytes();\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 
-  WriteFieldDocComment(printer, descriptor_);
+  // WriteFieldDocComment(printer, descriptor_);
   printer->Print(variables_,
     "$deprecation$public Builder ${$set$capitalized_name$$}$(\n"
     "    java.lang.String value) {\n"
@@ -280,23 +281,23 @@ GenerateBuilderMembers(io::Printer* printer) const {
     "}\n");
   printer->Annotate("{", "}", descriptor_);
   WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public Builder ${$clear$capitalized_name$$}$() {\n"
-    "  copyOnWrite();\n"
-    "  instance.clear$capitalized_name$();\n"
-    "  return this;\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public Builder ${$clear$capitalized_name$$}$() {\n"
+  //   "  copyOnWrite();\n"
+  //   "  instance.clear$capitalized_name$();\n"
+  //   "  return this;\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 
-  WriteFieldDocComment(printer, descriptor_);
-  printer->Print(variables_,
-    "$deprecation$public Builder ${$set$capitalized_name$Bytes$}$(\n"
-    "    com.google.protobuf.ByteString value) {\n"
-    "  copyOnWrite();\n"
-    "  instance.set$capitalized_name$Bytes(value);\n"
-    "  return this;\n"
-    "}\n");
-  printer->Annotate("{", "}", descriptor_);
+  // WriteFieldDocComment(printer, descriptor_);
+  // printer->Print(variables_,
+  //   "$deprecation$public Builder ${$set$capitalized_name$Bytes$}$(\n"
+  //   "    com.google.protobuf.ByteString value) {\n"
+  //   "  copyOnWrite();\n"
+  //   "  instance.set$capitalized_name$Bytes(value);\n"
+  //   "  return this;\n"
+  //   "}\n");
+  // printer->Annotate("{", "}", descriptor_);
 }
 
 void ImmutableStringFieldLiteGenerator::

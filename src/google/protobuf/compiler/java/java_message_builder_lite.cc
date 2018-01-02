@@ -89,7 +89,8 @@ Generate(io::Printer* printer) {
     "    com.google.protobuf.GeneratedMessageLite.$extendible$Builder<\n"
     "      $classname$, Builder> implements\n"
     "    $extra_interfaces$\n"
-    "    $classname$OrBuilder {\n",
+    //"    $classname$OrBuilder {\n",
+    "    com.google.protobuf.MessageLiteOrBuilder {\n",
     "classname", name_resolver_->GetImmutableClassName(descriptor_),
     "extra_interfaces", ExtraBuilderInterfaces(descriptor_),
     "extendible",
